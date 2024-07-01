@@ -1,0 +1,192 @@
+/* General */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}
+.nav-items{
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.nav-item {
+    font-weight: 400; 
+    position: relative; 
+    color: #b0bec5;
+}
+.nav-item:hover{
+    color: #000;
+    font-weight: 600;
+    cursor: pointer;
+}
+.nav-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* Adjust as needed to position the underline */
+    width: 0;
+    height: 3px; /* Height of the underline */
+    background-color: #000; /* Color of the underline */
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-item:hover::after{
+   width: 100%;
+}
+
+.sidebar-menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 15%;
+}
+
+.sidebar-menu{
+    margin: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10%;
+}
+
+.sidebar-item{
+    color: #b0bec5;
+}
+
+.skill{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    transition: transform 0.3s ease;    
+}
+
+.skill:hover {
+    transform: scale(1.2);
+}
+.skill-image{
+    height: 50px;
+    max-width: 80px;
+}
+
+.project{
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.project-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.options{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-bottom{
+    align-items: center;
+    font-size: 14px;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.github-stat{
+    display: flex;
+    gap: 0.5rem;
+}
+.github-stat-right{
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    height: 35px;
+}
+.live-logo{
+    height: 20px;
+}
+
+/* .project:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-color: #333;
+} */
+
+.project {
+    border: 2px solid lightgray;
+    padding: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
+  }
+  
+  .project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    transform: skewX(-25deg);
+    transition: left 0.4s ease;
+  }
+  
+  .project:hover::before {
+    left: 100%;
+  }
+  
+  .project:hover {
+    transform: scale(1.05); /* Slightly increase the scale */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Move it above other elements on hover */
+    border: none;
+  }
+
+.active{
+    font-weight: 700;
+    color: #000;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.icons{
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Trail.css */
+.trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+}
+  
