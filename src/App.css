@@ -168,4 +168,8 @@ body{
     justify-content: center;
     margin-bottom: 10rem;
    }
+   .skills{
+    justify-content: center;
+    align-items: center;
+    }
 }
