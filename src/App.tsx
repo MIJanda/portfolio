@@ -54,6 +54,8 @@ function App() {
   ]
   const isNavBarVisible = useNavBarVisibility(navBarRef)
   const activeSection = useActiveSection(sections)
+
+  const time = new Date()
   return(
     <div className='container'>
       <Trail/>
@@ -127,8 +129,11 @@ function App() {
             <section ref={contactMeSection} className='contact-me'>
               <h2 className='heading'>Contact Me</h2>
               <p>Have any cool project ideas we could collaborate on? Reach out to me 😁</p>
-              <div className='contacts'>
-                {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link }><img className='contact-icons' src={getImageUrl(contact.platformIcon)}/></a>)}
+              <div className='bottombar'>
+                <div className='contacts'>
+                  {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link }><img className='contact-icons' src={getImageUrl(contact.platformIcon)}/></a>)}
+                </div>
+                <p>&copy; Wasukira Ian {time.getFullYear()}</p>
               </div>
             </section>
           </Section>
