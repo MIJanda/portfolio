@@ -72,7 +72,7 @@ body{
 
 .skills{
     border-bottom: 1px solid lightgrey;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 .languages{
     display: flex;
@@ -128,7 +128,7 @@ body{
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 10rem;
 }
 .contact-me{
     display: flex;
@@ -141,5 +141,31 @@ body{
     gap: 1rem;
 }
 .contact-icons{
-    height: 45px;
+    height: 30px;
+    transition: transform 0.3s ease;    
+}
+
+.contact-icons:hover{
+    transform: scale(1.2);
+}
+
+@media only screen and (max-width: 768px) {
+   .main{
+    width: 100%;
+    padding: 0.5rem;
+   }
+   .nav-container{
+    flex-direction: column;
+    align-items: center;
+   }
+   .personal-section-one{
+    flex-direction: column;
+   }
+   .projects{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 10rem;
+   }
 }

@@ -58,8 +58,9 @@ function App() {
         </div>
       </div>
       <div className='content'>
-        {!isNavBarVisible && <SideBar activeSection={activeSection}/>}
+        {!isNavBarVisible && <SideBar activeSection={activeSection} personal={personalSection} languages={languagesSection} contact={contactMeSection} projects={projectsSection}/>}
         <div className='main'>
+        <section ref={personalSection} className='personal'>
           <p className='introduction'>Hi, I am <span className='bold-name'>{Data.alias}⚡️</span></p>
           <p className='introduction-title'>
           <TypeIt
@@ -78,7 +79,6 @@ function App() {
             <p>MY RESUME</p>
             <button className='downloadcv-btn'>DOWNLOAD</button>
           </div>
-          <section ref={personalSection} className='personal'>
             <div className='personal-section-one'>
               <img src={self} className='self-portrait'/>
               <div>
