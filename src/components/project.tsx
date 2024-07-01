@@ -3,6 +3,7 @@ import GitHub from '../assets/github-mark.png'
 import { VscIssues } from "react-icons/vsc";
 import { CiStar } from "react-icons/ci";
 import { PiGitForkLight } from "react-icons/pi";
+import { motion } from "framer-motion"
 import { IoTelescopeOutline } from "react-icons/io5";
 
 type ProjectProps = {
@@ -11,7 +12,7 @@ type ProjectProps = {
 
 export default function Project({project}: ProjectProps){
     return(
-        <div className='project'>
+        <motion.div className='project'>
             <div className='project-top'>
                 <h3>{project.name}</h3>
                 <div className='options'>
@@ -53,6 +54,6 @@ export default function Project({project}: ProjectProps){
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

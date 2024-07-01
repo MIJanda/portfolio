@@ -7,10 +7,12 @@ import Skill from './components/skill.tsx';
 import TypeIt from 'typeit-react';
 import { useEffect, useState, useRef } from 'react';
 import {API} from '../data/api.ts';
+import { motion } from 'framer-motion';
 import Project from './components/project.tsx';
 import useActiveSection from './customhooks/useActiveSection.ts';
 import useNavBarVisibility from './customhooks/useNavBarVisibility.ts';
 import Trail from './components/trail.tsx';
+import Section from './components/section.tsx';
 
 function App() {
   let [myRepos, setMyRepos] = useState([])
@@ -34,6 +36,10 @@ function App() {
       issues: item.open_issues
     }
   }
+  const headingVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1.5 } },
+  };
   const navBarRef = useRef(null)
   const personalSection = useRef(null)
   const languagesSection = useRef(null)
@@ -61,16 +67,23 @@ function App() {
         {!isNavBarVisible && <SideBar activeSection={activeSection} personal={personalSection} languages={languagesSection} contact={contactMeSection} projects={projectsSection}/>}
         <div className='main'>
         <section ref={personalSection} className='personal'>
-          <p className='introduction'>Hi, I am <span className='bold-name'>{Data.alias}⚡️</span></p>
+          <motion.h1
+          className='introduction'
+            initial="hidden"
+            animate="visible"
+            variants={headingVariants}
+          >
+            Hi, I am Wasuk ⚡
+          </motion.h1>
           <p className='introduction-title'>
           <TypeIt
           getBeforeInit={(instance) => {
             instance
-            .type('Machine Learning Enthusiast')
+            .type('Machine Learning')
             .pause(750)
             .delete()
             .pause(750)
-            .type('Software Developer')
+            .type('Software Development')
             return instance
           }}
           />
@@ -87,34 +100,38 @@ function App() {
               </div>
             </div>
           </section>
-          <section ref={languagesSection} className='skills'>
-            <h2 className='heading'>Skills & Technologies</h2>
-            <div className='languages'>
-              {Data.skills.languages.map(language => <Skill key={language.language} skillName={language.language} iconUrl={getImageUrl(language.icon)}/>)}
-            </div>
-            <div className='frameworks'>
-              <div className='libraries'>
-                {Data.skills.libraries.map(language => <Skill key={language.library} skillName={language.library} iconUrl={getImageUrl(language.icon)}/>)}
-                {Data.skills.frameWorks.map(language => <Skill key={language.frameWork} skillName={language.frameWork} iconUrl={getImageUrl(language.icon)}/>)}            
+          <Section>
+            <section ref={languagesSection} className='skills'>
+              <h2 className='heading'>Skills & Technologies</h2>
+              <div className='languages'>
+                {Data.skills.languages.map(language => <Skill key={language.language} skillName={language.language} iconUrl={getImageUrl(language.icon)}/>)}
               </div>
-              <div className='libraries'>
-                {Data.skills.others.map(language => <Skill key={language.technology} skillName={language.technology} iconUrl={getImageUrl(language.icon)}/>)}
+              <div className='frameworks'>
+                <div className='libraries'>
+                  {Data.skills.libraries.map(language => <Skill key={language.library} skillName={language.library} iconUrl={getImageUrl(language.icon)}/>)}
+                  {Data.skills.frameWorks.map(language => <Skill key={language.frameWork} skillName={language.frameWork} iconUrl={getImageUrl(language.icon)}/>)}            
+                </div>
+                <div className='libraries'>
+                  {Data.skills.others.map(language => <Skill key={language.technology} skillName={language.technology} iconUrl={getImageUrl(language.icon)}/>)}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </Section>
           <div ref={projectsSection}>
             <h2 className='heading'>Projects</h2>
             <section className='projects'>
              {myRepos.map((repo: any) => <Project key={repo.id} project={parseProjects(repo)}/>)}
             </section>
           </div>
-          <section ref={contactMeSection} className='contact-me'>
-            <h2 className='heading'>Contact Me</h2>
-            <p>Have any cool project ideas we could collaborate on? Reach out to me 😁</p>
-            <div className='contacts'>
-              {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link }><img className='contact-icons' src={getImageUrl(contact.platformIcon)}/></a>)}
-            </div>
-          </section>
+          <Section>
+            <section ref={contactMeSection} className='contact-me'>
+              <h2 className='heading'>Contact Me</h2>
+              <p>Have any cool project ideas we could collaborate on? Reach out to me 😁</p>
+              <div className='contacts'>
+                {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link }><img className='contact-icons' src={getImageUrl(contact.platformIcon)}/></a>)}
+              </div>
+            </section>
+          </Section>
         </div>
       </div>
     </div>
