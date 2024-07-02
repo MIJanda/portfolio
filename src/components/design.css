@@ -221,5 +221,8 @@ a{
         border-radius: 20px;
         padding: 0.5rem;
         margin-bottom: 1rem;
+        background: rgba(255, 252, 252, 0.7);
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px);
     }
 }

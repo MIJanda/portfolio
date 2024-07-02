@@ -8,3 +8,11 @@ type Project = {
     name: string
     issues: string
 }
+
+interface DarkModeState {
+    darkMode: boolean;
+}
+
+type DarkModeAction = { 
+    type: 'TOGGLE_DARK_MODE' 
+};
