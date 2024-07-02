@@ -56,6 +56,11 @@ function App() {
   const activeSection = useActiveSection(sections)
 
   const time = new Date()
+
+ function handleRedirect(){
+  window.location.href = 'https://docs.google.com/document/d/1i4zEZiOKvEH6cnvxEJzjEzP0sKo43j7RjDUCqCBUnRE/edit?usp=sharing';
+ }
+ 
   return(
     <div className='container'>
       <Trail/>
@@ -92,7 +97,7 @@ function App() {
           </p>
           <div>
             <p>MY RESUME</p>
-            <button className='downloadcv-btn'>DOWNLOAD</button>
+            <button onClick={handleRedirect} className='downloadcv-btn'>DOWNLOAD</button>
           </div>
             <div className='personal-section-one'>
               <img src={self} className='self-portrait'/>
