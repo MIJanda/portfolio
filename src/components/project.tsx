@@ -48,28 +48,30 @@ export default function Project({project}: ProjectProps){
             </div>
             <p>{project.description}</p>
             <div className='project-bottom'>
-                <div className='github-stat'>
+                <div className='language'>
                     <h4>{project.language}</h4>
                 </div>
-                <div className='github-stat'>
-                    <VscIssues size={25}/>
-                    <div className='github-stat-right'>
-                        <span>{project.issues}</span>
-                        <span>Issues</span>
+                <div className='github-stats'>
+                    <div className='github-stat'>
+                        <VscIssues size={25}/>
+                        <div className='github-stat-right'>
+                            <span>{project.issues}</span>
+                            <span>Issues</span>
+                        </div>
                     </div>
-                </div>
-                <div className='github-stat'>
-                    <CiStar size={25}/>
-                    <div className='github-stat-right'>
-                        <span>{project.starCount}</span>
-                        <span>Stars</span>
+                    <div className='github-stat'>
+                        <CiStar size={25}/>
+                        <div className='github-stat-right'>
+                            <span>{project.starCount}</span>
+                            <span>Stars</span>
+                        </div>
                     </div>
-                </div>
-                <div className='github-stat'>
-                    <PiGitForkLight size={25}/>
-                    <div className='github-stat-right'>
-                        <span>{project.forks}</span>
-                        <span>Forks</span>
+                    <div className='github-stat'>
+                        <PiGitForkLight size={25}/>
+                        <div className='github-stat-right'>
+                            <span>{project.forks}</span>
+                            <span>Forks</span>
+                        </div>
                     </div>
                 </div>
             </div>
