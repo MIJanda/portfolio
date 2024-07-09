@@ -13,6 +13,9 @@ import useActiveSection from './customhooks/useActiveSection.ts';
 import useNavBarVisibility from './customhooks/useNavBarVisibility.ts';
 import Trail from './components/trail.tsx';
 import Section from './components/section.tsx';
+import { BsTools } from "react-icons/bs";
+import { TbBriefcase } from "react-icons/tb";
+import { IoPersonOutline } from "react-icons/io5";
 
 function App() {
   let [myRepos, setMyRepos] = useState([])
@@ -102,14 +105,14 @@ function App() {
             <div className='personal-section-one'>
               <img src={self} className='self-portrait'/>
               <div>
-                <h2>{Data.fullName.toUpperCase()}</h2>
+                <h2><IoPersonOutline/> {Data.fullName.toUpperCase()}</h2>
                 <p>{Data.openingStatement}</p>
               </div>
             </div>
           </section>
           <Section>
             <section ref={languagesSection} className='skills'>
-              <h2 className='heading'>Skills & Technologies</h2>
+              <h2 className='heading'><BsTools/> Skills & Technologies</h2>
               <div className='languages'>
                 {Data.skills.languages.map(language => <Skill key={language.language} skillName={language.language} iconUrl={getImageUrl(language.icon)}/>)}
               </div>
@@ -125,7 +128,7 @@ function App() {
             </section>
           </Section>
           <div ref={projectsSection}>
-            <h2 className='heading'>Projects</h2>
+            <h2 className='heading'><TbBriefcase size={20}/> Projects</h2>
             <section className='projects'>
              {myRepos.map((repo: any) => <Project key={repo.id} project={parseProjects(repo)}/>)}
             </section>
