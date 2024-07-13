@@ -6,7 +6,7 @@ import self from './assets/myself.jpg'
 import Skill from './components/skill.tsx';
 import TypeIt from 'typeit-react';
 import { useEffect, useState, useRef } from 'react';
-import {API} from '../data/api.ts';
+import { API } from '../data/api.ts';
 import { motion } from 'framer-motion';
 import Project from './components/project.tsx';
 import useActiveSection from './customhooks/useActiveSection.ts';
@@ -19,15 +19,15 @@ import { IoPersonOutline } from "react-icons/io5";
 
 function App() {
   let [myRepos, setMyRepos] = useState([])
-  useEffect(()=>{
-    async function getRepos(){
-     
+  useEffect(() => {
+    async function getRepos() {
+
       let response = await API.fetchMyRepos();
       setMyRepos(response)
     }
     getRepos()
   }, [])
-  function parseProjects(item: any): Project{
+  function parseProjects(item: any): Project {
     return {
       homepage: item.homepage,
       url: item.html_url,
@@ -50,87 +50,87 @@ function App() {
   const projectsSection = useRef(null)
 
   const sections = [
-    {className: 'personal', ref: personalSection},
-    {className: 'languages', ref: languagesSection},
-    {className: 'projects', ref: projectsSection},
-    {className: 'contact-me', ref: contactMeSection}
+    { className: 'personal', ref: personalSection },
+    { className: 'languages', ref: languagesSection },
+    { className: 'projects', ref: projectsSection },
+    { className: 'contact-me', ref: contactMeSection }
   ]
   const isNavBarVisible = useNavBarVisibility(navBarRef)
   const activeSection = useActiveSection(sections)
 
   const time = new Date()
 
- function handleRedirect(){
-  window.location.href = 'https://docs.google.com/document/d/1i4zEZiOKvEH6cnvxEJzjEzP0sKo43j7RjDUCqCBUnRE/edit?usp=sharing';
- }
- 
-  return(
+  function handleRedirect() {
+    window.location.href = 'https://drive.google.com/file/d/1HXy_-c6_hFHLJiqEyoR3oZNcq4M8x1FD/view?usp=sharing'
+  }
+
+  return (
     <div className='container'>
-      <Trail/>
+      <Trail />
       <div ref={navBarRef} className='nav-container'>
-        <NavBar personal={personalSection} languages={languagesSection} contact={contactMeSection} projects={projectsSection}/>
+        <NavBar personal={personalSection} languages={languagesSection} contact={contactMeSection} projects={projectsSection} />
         <div className='contacts'>
-          {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link }><img className='contact-icons' src={getImageUrl(contact.platformIcon)}/></a>)}
+          {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link}><img className='contact-icons' src={getImageUrl(contact.platformIcon)} /></a>)}
         </div>
       </div>
       <div className='content'>
-        {!isNavBarVisible && <SideBar activeSection={activeSection} personal={personalSection} languages={languagesSection} contact={contactMeSection} projects={projectsSection}/>}
+        {!isNavBarVisible && <SideBar activeSection={activeSection} personal={personalSection} languages={languagesSection} contact={contactMeSection} projects={projectsSection} />}
         <div className='main'>
-        <section ref={personalSection} className='personal'>
-          <motion.h1
-          className='introduction'
-            initial="hidden"
-            animate="visible"
-            variants={headingVariants}
-          >
-            Hi, I am Wasuk ⚡
-          </motion.h1>
-          <p className='introduction-title'>
-          <TypeIt
-          getBeforeInit={(instance) => {
-            instance
-            .type('Machine Learning')
-            .pause(750)
-            .delete()
-            .pause(750)
-            .type('Software Development')
-            return instance
-          }}
-          />
-          </p>
-          <div>
-            <p>MY RESUME</p>
-            <button onClick={handleRedirect} className='downloadcv-btn'>DOWNLOAD</button>
-          </div>
+          <section ref={personalSection} className='personal'>
+            <motion.h1
+              className='introduction'
+              initial="hidden"
+              animate="visible"
+              variants={headingVariants}
+            >
+              Hi, I am Janda⚡
+            </motion.h1>
+            <p className='introduction-title'>
+              <TypeIt
+                getBeforeInit={(instance) => {
+                  instance
+                    .type('Web3 Engineer')
+                    .pause(750)
+                    .delete()
+                    .pause(750)
+                    .type('Software Engineer')
+                  return instance
+                }}
+              />
+            </p>
+            <div>
+              <p>MY RESUME</p>
+              <button onClick={handleRedirect} className='downloadcv-btn'>View</button>
+            </div>
             <div className='personal-section-one'>
-              <img src={self} className='self-portrait'/>
+              <img src={self} className='self-portrait' />
               <div>
-                <h2><IoPersonOutline/> {Data.fullName.toUpperCase()}</h2>
+                <h2><IoPersonOutline /> {Data.fullName.toUpperCase()}</h2>
                 <p>{Data.openingStatement}</p>
               </div>
             </div>
           </section>
           <Section>
             <section ref={languagesSection} className='skills'>
-              <h2 className='heading'><BsTools/> Skills & Technologies</h2>
+              <h2 className='heading'><BsTools /> Skills & Technologies</h2>
               <div className='languages'>
-                {Data.skills.languages.map(language => <Skill key={language.language} skillName={language.language} iconUrl={getImageUrl(language.icon)}/>)}
+                {Data.skills.languages.map(language => <Skill key={language.language} skillName={language.language} iconUrl={getImageUrl(language.icon)} />)}
               </div>
               <div className='frameworks'>
                 <div className='libraries'>
-                  {Data.skills.libraries.map(language => <Skill key={language.library} skillName={language.library} iconUrl={getImageUrl(language.icon)}/>)}
-                  {Data.skills.frameWorks.map(language => <Skill key={language.frameWork} skillName={language.frameWork} iconUrl={getImageUrl(language.icon)}/>)}            
+                  {Data.skills.libraries.map(language => <Skill key={language.library} skillName={language.library} iconUrl={getImageUrl(language.icon)} />)}
+                  {Data.skills.frameWorks.map(language => <Skill key={language.frameWork} skillName={language.frameWork} iconUrl={getImageUrl(language.icon)} />)}
                 </div>
                 <div className='libraries'>
-                  {Data.skills.others.map(language => <Skill key={language.technology} skillName={language.technology} iconUrl={getImageUrl(language.icon)}/>)}
+                  {Data.skills.others.map(language => <Skill key={language.technology} skillName={language.technology} iconUrl={getImageUrl(language.icon)} />)}
                 </div>
               </div>
             </section>
           </Section>
           <div ref={projectsSection}>
-            <h2 className='heading'><TbBriefcase size={20}/> Projects</h2>
+            <h2 className='heading'><TbBriefcase size={20} /> Projects</h2>
             <section className='projects'>
-             {myRepos.map((repo: any) => <Project key={repo.id} project={parseProjects(repo)}/>)}
+              {myRepos.map((repo: any) => <Project key={repo.id} project={parseProjects(repo)} />)}
             </section>
           </div>
           <Section>
@@ -139,9 +139,9 @@ function App() {
               <p>Have any cool project ideas we could collaborate on? Reach out to me 😁</p>
               <div className='bottombar'>
                 <div className='contacts'>
-                  {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link }><img className='contact-icons' src={getImageUrl(contact.platformIcon)}/></a>)}
+                  {Data.contacts.map(contact => <a href={contact.platformIcon == 'gmail.png' ? `mailto:${contact.link}` : contact.link}><img className='contact-icons' src={getImageUrl(contact.platformIcon)} /></a>)}
                 </div>
-                <p>&copy; Wasukira Ian {time.getFullYear()}</p>
+                <p>&copy; Mokili Isaac Janda {time.getFullYear()}</p>
               </div>
             </section>
           </Section>
@@ -153,6 +153,6 @@ function App() {
 
 export default App
 
-function getImageUrl(name: string){
+function getImageUrl(name: string) {
   return new URL(`./assets/${name}`, import.meta.url).href
 }
